@@ -33,7 +33,7 @@ In my SQL command line (Or you can use a database tool like [DBeaver](https://db
 
 > mysql> CREATE USER 'dbuser'@'localhost' IDENTIFIED BY 'dbpassword';
 
-> mysql> GRANT SELECT, INSERT, UPDATE, DELETE ON test . * TO 'dbuser'@'localhost';
+> mysql> GRANT SELECT, INSERT, UPDATE, DELETE ON dbuser . * TO 'dbuser'@'localhost';
 
 You can change `user`, `password` or `database name` but you will have to change the `application.properties` in the back end project accordingly.
 
