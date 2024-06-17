@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Topic } from 'src/app/models/topic';
+import { Topic } from 'src/app/core/models/topic';
 import { TopicService } from 'src/app/services/topic.service';
 
 @Component({

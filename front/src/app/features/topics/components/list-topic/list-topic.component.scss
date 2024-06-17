@@ -1,0 +1,20 @@
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+}
+
+.mat-purple {
+    background-color: #7550ec !important; 
+    color: #fff !important;
+}
+
+mat-card-header {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+mat-card {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
