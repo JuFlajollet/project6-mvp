@@ -28,4 +28,12 @@ public class TopicService {
 
         return topicMapper.toDto(topic);
     }
+
+    public void subscribe(Long id, Long userId) {
+        //TODO: Implement once user feature done
+    }
+
+    public void unsubscribe(Long id, Long userId) {
+        //TODO: Implement once user feature done
+    }
 }

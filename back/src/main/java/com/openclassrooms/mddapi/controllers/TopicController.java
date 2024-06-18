@@ -25,8 +25,34 @@ public class TopicController {
 
     @GetMapping(value = "/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<TopicDTO> getTopic(@PathVariable("id") String id){
-        TopicDTO topic = topicService.findById(Long.valueOf(id));
+        try {
+            TopicDTO topic = topicService.findById(Long.valueOf(id));
 
-        return ResponseEntity.ok().body(topic);
+            return ResponseEntity.ok().body(topic);
+        } catch (NumberFormatException e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @PostMapping("{id}/subscribe/{userId}")
+    public ResponseEntity<?> subscribe(@PathVariable("id") String id, @PathVariable("userId") String userId) {
+        try {
+            this.topicService.subscribe(Long.parseLong(id), Long.parseLong(userId));
+
+            return ResponseEntity.ok().build();
+        } catch (NumberFormatException e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @DeleteMapping("{id}/subscribe/{userId}")
+    public ResponseEntity<?> unsubscribe(@PathVariable("id") String id, @PathVariable("userId") String userId) {
+        try {
+            this.topicService.unsubscribe(Long.parseLong(id), Long.parseLong(userId));
+
+            return ResponseEntity.ok().build();
+        } catch (NumberFormatException e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 }
