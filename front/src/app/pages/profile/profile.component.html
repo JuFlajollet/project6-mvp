@@ -1,0 +1,22 @@
+<mat-card class="center" *ngIf="user$ | async as user">
+    <mat-card-header>
+        <mat-card-title>
+            Profil utilisateur
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="center">
+            <form class="profile-form" [formGroup]="form" (ngSubmit)="save()">
+                <mat-form-field class="purple-form" appearance="outline">
+                    <input matInput [(ngModel)]="user.username" placeholder="Nom d'utilisateur" formControlName="username">
+                </mat-form-field>
+                <mat-form-field class="purple-form" appearance="outline">
+                    <input class="purple-input" matInput [(ngModel)]="user.email" placeholder="Email" formControlName="email">
+                </mat-form-field>
+                <button mat-flat-button color="purple" type="submit" [disabled]="form.invalid">Sauvegarder</button>
+                <span *ngIf="onError">Une erreur s'est produite</span>
+            </form>
+            <button mat-button class="red-text" (click)="disconnect()">Se déconnecter</button>
+        </div>
+    </mat-card-content>
+</mat-card>

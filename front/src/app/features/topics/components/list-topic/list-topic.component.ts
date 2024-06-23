@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Topic } from 'src/app/core/models/topic';
-import { TopicService } from 'src/app/services/topic.service';
+import { TopicService } from 'src/app/core/services/topic.service';
 
 @Component({
   selector: 'app-list-topic',
@@ -10,9 +10,13 @@ import { TopicService } from 'src/app/services/topic.service';
 })
 export class ListTopicComponent {
 
-  public topics$: Observable<Topic[]> = this.topicService.findAll();
+  public topics$!: Observable<Topic[]>;
 
   constructor(
     private topicService: TopicService,
   ) { }
+
+  ngOnInit(): void {
+    this.topics$ = this.topicService.findAll();
+  }
 }
