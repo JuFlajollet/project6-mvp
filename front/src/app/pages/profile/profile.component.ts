@@ -18,8 +18,6 @@ export class ProfileComponent {
   public user$: Observable<any> | undefined;
 
   public subscribe$: Observable<any> | undefined; //TODO: change once implemented
-  
-  public onError: boolean = false;
 
   public form: FormGroup = this.formBuilder.group({
     email: [

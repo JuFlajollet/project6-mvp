@@ -22,4 +22,12 @@ public class ArticleService {
 
         return articleMapper.toDto(articles);
     }
+
+    public ArticleDto create(ArticleDto articleDto) {
+        Article article = articleMapper.toEntity(articleDto);
+
+        Article savedArticle = this.articleRepository.save(article);
+
+        return articleMapper.toDto(savedArticle);
+    }
 }

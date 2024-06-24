@@ -15,4 +15,8 @@ export class ArticleService {
   public findAll(): Observable<Article[]> {
     return this.httpClient.get<Article[]>(this.pathService);
   }
+
+  public create(article: Article): Observable<Article> {
+    return this.httpClient.post<Article>(this.pathService, article);
+  }
 }
