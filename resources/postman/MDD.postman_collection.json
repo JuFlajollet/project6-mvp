@@ -39,6 +39,67 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "article",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/article/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"article",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Test creating article\",\r\n    \"content\": \"This is a test\",\r\n    \"date\": \"2024-06-25\",\r\n    \"author_id\": 1,\r\n    \"topic_id\": 1,\r\n    \"description\": \"my description\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/article",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"article"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
