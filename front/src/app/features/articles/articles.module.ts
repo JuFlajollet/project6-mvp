@@ -6,21 +6,33 @@ import { ListArticleComponent } from "./components/list-article/list-article.com
 import { CoreModule } from "src/app/core/core.module";
 import { ArticlesRoutingModule } from "./articles-routing.module";
 import { RouterLink } from "@angular/router";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatInputModule } from "@angular/material/input";
+import { MatSelectModule } from '@angular/material/select';
+import { CreateArticleComponent } from "./components/create-article/create-article.component";
 
 @NgModule({
     declarations: [
-        ListArticleComponent
+        ListArticleComponent,
+        CreateArticleComponent
     ],
     imports: [
         ArticlesRoutingModule,
         RouterLink,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
         CoreModule,
         MatCardModule,
         MatButtonModule,
         CommonModule
     ],
     exports: [
-        ListArticleComponent
+        ListArticleComponent,
+        CreateArticleComponent
     ]
 })
 export class ArticlesModule { }
