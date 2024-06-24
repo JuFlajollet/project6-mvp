@@ -13,7 +13,6 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CoreModule } from "../core/core.module";
 
 @NgModule({
-    providers: [],
     declarations: [
         HomeComponent,
         ProfileComponent

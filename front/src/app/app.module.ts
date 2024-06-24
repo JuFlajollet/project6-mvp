@@ -10,8 +10,8 @@ import { provideHttpClient } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 
 @NgModule({
-    declarations: [AppComponent],
     providers: [provideHttpClient()],
+    declarations: [AppComponent],
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,

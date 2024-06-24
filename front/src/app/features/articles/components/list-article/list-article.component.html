@@ -1,0 +1,37 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<app-header></app-header>
+
+<div class="container">
+    <div class="container-left">
+        <button [routerLink]="'create'" mat-flat-button color="purple">
+            Créer un article
+        </button>
+    </div>
+    <div class="container-right">
+        <button mat-button (click)="sort()">
+            <div>
+                Trier par : <span class="big material-icons">{{ sortType }}</span>
+            </div>
+        </button>
+    </div>
+</div>
+
+<div class="container-articles">
+    <mat-card [routerLink]="article.id.toString()" appearance="outlined" class="flat-card" *ngFor="let article of articles">
+        <mat-card-header>
+        <mat-card-title>{{ article.title }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                {{ article.date | date }}
+            </p>
+            <p *ngIf="articleUsers">
+                {{ articleUsers.get(article)?.username }}
+            </p>
+            <p>
+                Contenu: {{ article.content }}
+            </p>
+        </mat-card-content>
+    </mat-card>
+</div>

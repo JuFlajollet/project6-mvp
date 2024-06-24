@@ -1,25 +1,26 @@
 import { MatCardModule } from "@angular/material/card";
-import { ListTopicComponent } from "./components/list-topic/list-topic.component";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { MatButtonModule } from "@angular/material/button";
-import { provideHttpClient } from "@angular/common/http";
+import { ListArticleComponent } from "./components/list-article/list-article.component";
 import { CoreModule } from "src/app/core/core.module";
-import { TopicsRoutingModule } from "./topics-routing.module";
+import { ArticlesRoutingModule } from "./articles-routing.module";
+import { RouterLink } from "@angular/router";
 
 @NgModule({
     declarations: [
-        ListTopicComponent
+        ListArticleComponent
     ],
     imports: [
-        TopicsRoutingModule,
+        ArticlesRoutingModule,
+        RouterLink,
         CoreModule,
         MatCardModule,
         MatButtonModule,
         CommonModule
     ],
     exports: [
-        ListTopicComponent
+        ListArticleComponent
     ]
 })
-export class TopicsModule { }
+export class ArticlesModule { }

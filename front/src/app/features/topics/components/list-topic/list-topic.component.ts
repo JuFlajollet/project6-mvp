@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Topic } from 'src/app/core/models/topic';
 import { TopicService } from 'src/app/core/services/topic.service';
@@ -8,7 +8,7 @@ import { TopicService } from 'src/app/core/services/topic.service';
   templateUrl: './list-topic.component.html',
   styleUrl: './list-topic.component.scss'
 })
-export class ListTopicComponent {
+export class ListTopicComponent implements OnInit {
 
   public topics$!: Observable<Topic[]>;
 
