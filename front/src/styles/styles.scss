@@ -6,3 +6,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-form-field-appearance-outline .mat-form-field-outline {
     color: #7763c5 !important;
 }
+
+.mat-drawer-backdrop {
+    position: fixed !important;
+}

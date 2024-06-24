@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { TopicsModule } from './features/topics/topics.module';
 import { PagesModule } from './pages/pages.module';
 import { provideHttpClient } from '@angular/common/http';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
     declarations: [AppComponent],
@@ -17,6 +18,7 @@ import { provideHttpClient } from '@angular/common/http';
         AppRoutingModule,
         BrowserAnimationsModule,
         MatButtonModule,
+        CoreModule,
         TopicsModule,
         PagesModule
     ]

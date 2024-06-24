@@ -1,0 +1,29 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<mat-drawer-container [hasBackdrop]="true">
+    <div class="header">
+        <img [routerLink]="['/']" class="left" src="/assets/logo_p6.png" alt="logo" />
+        <div class="menu-button right">
+            <button mat-button [routerLink]="['/articles']" routerLinkActive="active-link">Articles</button>
+            <button mat-button [routerLink]="['/topics']" routerLinkActive="active-link">Thèmes</button>
+            <button mat-button [routerLink]="['/profile']" routerLinkActive="active-link" class="big material-icons">
+                account_circle
+            </button>
+        </div>
+        <div class="side-menu-button right">
+            <button mat-button class="material-icons" (click)="drawer.toggle()">
+                menu
+            </button>
+        </div>
+    </div>
+    <hr/>
+    <mat-drawer class="side-menu" #drawer>        
+        <div class="side-menu-button">
+            <button mat-button [routerLink]="['/articles']" routerLinkActive="active-link">Articles</button>
+            <button mat-button [routerLink]="['/topics']" routerLinkActive="active-link" class="top">Thèmes</button>
+            <button mat-button [routerLink]="['/profile']" routerLinkActive="active-link" class="bottom big material-icons">
+                account_circle
+            </button>
+        </div>
+    </mat-drawer>
+</mat-drawer-container>

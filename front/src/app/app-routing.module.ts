@@ -7,6 +7,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
 // to manage unauthenticated user to access private routes
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'articles', component: ProfileComponent },
+  { path: 'topics', component: ProfileComponent },
   { path: 'profile', component: ProfileComponent }
 ];
 
