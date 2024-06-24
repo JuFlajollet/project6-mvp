@@ -10,6 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar'; 
 import { ProfileComponent } from "./profile/profile.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { CoreModule } from "../core/core.module";
 
 @NgModule({
     providers: [],
@@ -18,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
         ProfileComponent
     ],
     imports: [
+        CoreModule,
         TopicsModule,
         MatCardModule,
         MatButtonModule,
