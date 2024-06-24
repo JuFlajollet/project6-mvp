@@ -1,0 +1,26 @@
+<div class="center" *ngIf="user$ | async as user">
+    <h1>
+        Profil utilisateur
+    </h1>
+    <div class="center" *ngIf="user$ | async as user">
+        <form class="profile-form" [formGroup]="form" (ngSubmit)="save()">
+            <mat-form-field class="purple-form" appearance="outline">
+                <input matInput [(ngModel)]="user.username" placeholder="Nom d'utilisateur" formControlName="username">
+            </mat-form-field>
+            <mat-form-field class="purple-form" appearance="outline">
+                <input class="purple-input" matInput [(ngModel)]="user.email" placeholder="Email" formControlName="email">
+            </mat-form-field>
+            <button mat-flat-button color="purple" type="submit" [disabled]="form.invalid">Sauvegarder</button>
+            <span *ngIf="onError">Une erreur s'est produite</span>
+        </form>
+        <button mat-button class="red-text" (click)="disconnect()">Se déconnecter</button>
+    </div>
+</div>
+<hr/>
+<div class="center">
+    <h1>Abonnements</h1>
+    <ng-template [ngIf]="subscribe$ | async" [ngIfElse]="empty">
+
+    </ng-template>
+    <ng-template #empty>Vous n'avez pas d'abonnements.</ng-template>
+</div>

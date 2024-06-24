@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Topic } from '../core/models/topic';
 import { Observable } from 'rxjs';
+import { Topic } from '../models/topic';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +17,6 @@ export class TopicService {
   }
 
   public findById(id: string): Observable<Topic> {
-    return this.httpClient.get<Topic>(`this.pathService/${id}`);
+    return this.httpClient.get<Topic>(`${this.pathService}/${id}`);
   }
 }

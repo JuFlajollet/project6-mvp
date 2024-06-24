@@ -4,4 +4,4 @@ export class Topic {
     description!: string;
     createdAt!: Date;
     updatedAt!: Date;
-  }
+}
