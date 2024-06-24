@@ -1,6 +1,6 @@
 package com.openclassrooms.mddapi.controllers;
 
-import com.openclassrooms.mddapi.dto.TopicDTO;
+import com.openclassrooms.mddapi.dto.TopicDto;
 import com.openclassrooms.mddapi.services.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -16,17 +16,17 @@ public class TopicController {
     @Autowired
     private TopicService topicService;
 
-    @GetMapping("")
-    public ResponseEntity<List<TopicDTO>> getTopics(){
-        List<TopicDTO> topics = topicService.findAll();
+    @GetMapping(value = "", produces = { MediaType.APPLICATION_JSON_VALUE })
+    public ResponseEntity<List<TopicDto>> getTopics(){
+        List<TopicDto> topics = topicService.findAll();
 
         return ResponseEntity.ok().body(topics);
     }
 
     @GetMapping(value = "/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
-    public ResponseEntity<TopicDTO> getTopic(@PathVariable("id") String id){
+    public ResponseEntity<TopicDto> getTopic(@PathVariable("id") String id){
         try {
-            TopicDTO topic = topicService.findById(Long.valueOf(id));
+            TopicDto topic = topicService.findById(Long.valueOf(id));
 
             return ResponseEntity.ok().body(topic);
         } catch (NumberFormatException e) {
