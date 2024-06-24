@@ -10,10 +10,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar'; 
 import { ProfileComponent } from "./profile/profile.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { provideHttpClient } from "@angular/common/http";
 
 @NgModule({
-    providers: [provideHttpClient()],
+    providers: [],
     declarations: [
         HomeComponent,
         ProfileComponent

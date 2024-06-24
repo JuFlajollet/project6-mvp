@@ -12,8 +12,8 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getById(id: string): Observable<any> {
-    return this.httpClient.get(`${this.pathService}/${id}`, {responseType: 'text'});
+  public getById(id: string): Observable<User> {
+    return this.httpClient.get<User>(`${this.pathService}/${id}`);
   }
 
   public update(id: string, user: User): Observable<User> {

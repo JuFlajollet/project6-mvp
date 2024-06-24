@@ -17,6 +17,6 @@ export class TopicService {
   }
 
   public findById(id: string): Observable<Topic> {
-    return this.httpClient.get<Topic>(`this.pathService/${id}`);
+    return this.httpClient.get<Topic>(`${this.pathService}/${id}`);
   }
 }
