@@ -1,6 +1,6 @@
 package com.openclassrooms.mddapi.services;
 
-import com.openclassrooms.mddapi.dto.TopicDTO;
+import com.openclassrooms.mddapi.dto.TopicDto;
 import com.openclassrooms.mddapi.mappers.TopicMapper;
 import com.openclassrooms.mddapi.models.Topic;
 import com.openclassrooms.mddapi.repositories.TopicRepository;
@@ -17,13 +17,13 @@ public class TopicService {
     @Autowired
     private TopicMapper topicMapper;
 
-    public List<TopicDTO> findAll() {
+    public List<TopicDto> findAll() {
         List<Topic> topics = this.topicRepository.findAll();
 
         return topicMapper.toDto(topics);
     }
 
-    public TopicDTO findById(Long id) {
+    public TopicDto findById(Long id) {
         Topic topic = this.topicRepository.findById(id).orElse(null);
 
         return topicMapper.toDto(topic);

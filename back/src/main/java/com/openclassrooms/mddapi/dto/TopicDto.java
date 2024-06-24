@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class TopicDTO {
+public class TopicDto {
     private Long id;
 
     @NotBlank
