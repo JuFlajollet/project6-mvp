@@ -29,6 +29,7 @@ export class ListArticleComponent implements OnInit {
         })
       })
       this.articles = articles;
+      this.sort();
     });
   }
 

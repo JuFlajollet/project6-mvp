@@ -6,11 +6,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopicsModule } from './features/topics/topics.module';
 import { PagesModule } from './pages/pages.module';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 
 @NgModule({
-    providers: [provideHttpClient()],
+    providers: [provideHttpClient(withFetch())],
     declarations: [AppComponent],
     bootstrap: [AppComponent],
     imports: [

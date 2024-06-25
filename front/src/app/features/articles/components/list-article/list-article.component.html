@@ -23,12 +23,14 @@
             <mat-card-title>{{ article.title }}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <p>
-                {{ article.date | date }}
-            </p>
-            <p *ngIf="articleUsers">
-                {{ articleUsers.get(article)?.username }}
-            </p>
+            <div class="container-articles-info">
+                <p class="articles-info">
+                    {{ article.date | date }}
+                </p>
+                <p class="articles-info" *ngIf="articleUsers">
+                    {{ articleUsers.get(article)?.username }}
+                </p>
+            </div>
             <p>
                 Contenu: {{ article.content }}
             </p>
