@@ -1,0 +1,38 @@
+<app-header></app-header>
+
+<div class="container">
+    <div class="container-left">
+        <button mat-button (click)="back()">
+            <div>
+                <span class="big material-icons">arrow_back</span>
+            </div>
+        </button>
+    </div>
+</div>
+
+<div class="center">
+    <h1>
+        Créer un nouvel article
+    </h1>
+    <div class="center">
+        <form class="article-form" [formGroup]="form" (ngSubmit)="save()">
+            <mat-form-field appearance="outline">
+                <mat-label>Sélectionner un thème</mat-label>
+                <mat-select ngDefaultControl formControlName="topic_id">
+                  <mat-option *ngFor="let topic of topics$ | async" [value]="topic.id">
+                    {{topic.title}}
+                  </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="purple-form" appearance="outline">
+                <mat-label>Titre de l'article</mat-label>
+                <input matInput placeholder="Titre de l'article" formControlName="title">
+            </mat-form-field>
+            <mat-form-field class="purple-form" appearance="outline">
+                <mat-label>Contenu de l'article</mat-label>
+                <textarea class="purple-input" matInput placeholder="Contenu de l'article" formControlName="content"></textarea>
+            </mat-form-field>
+            <button mat-flat-button color="purple" type="submit" [disabled]="form.invalid">Créer</button>
+        </form>
+    </div>
+</div>

@@ -24,6 +24,17 @@ public class ArticleController {
         return ResponseEntity.ok().body(articles);
     }
 
+    @GetMapping(value = "/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+    public ResponseEntity<ArticleDto> getArticle(@PathVariable("id") String id){
+        ArticleDto article = articleService.findById(Long.valueOf(id));
+
+        if (article == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok().body(article);
+    }
+
     @PostMapping(value = "", produces = { MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<ArticleDto> create(@Valid @RequestBody ArticleDto articleDto) {
         ArticleDto article = this.articleService.create(articleDto);

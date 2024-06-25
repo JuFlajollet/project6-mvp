@@ -45,7 +45,7 @@ export class ProfileComponent {
 
   ngOnInit(): void {
     //TODO: get id from session service instead
-    this.user$ = this.userService.getById('1');
+    this.user$ = this.userService.findById('1');
   }
 
   public save(): void {

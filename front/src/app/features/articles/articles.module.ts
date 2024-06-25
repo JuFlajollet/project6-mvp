@@ -11,11 +11,13 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from '@angular/material/select';
 import { CreateArticleComponent } from "./components/create-article/create-article.component";
+import { DetailArticleComponent } from "./components/detail-article/detail-article.component";
 
 @NgModule({
     declarations: [
         ListArticleComponent,
-        CreateArticleComponent
+        CreateArticleComponent,
+        DetailArticleComponent
     ],
     imports: [
         ArticlesRoutingModule,
@@ -32,7 +34,8 @@ import { CreateArticleComponent } from "./components/create-article/create-artic
     ],
     exports: [
         ListArticleComponent,
-        CreateArticleComponent
+        CreateArticleComponent,
+        DetailArticleComponent
     ]
 })
 export class ArticlesModule { }

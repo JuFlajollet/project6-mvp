@@ -1,0 +1,33 @@
+<app-header></app-header>
+
+<div class="container">
+    <button class="container-button" mat-button (click)="back()">
+        <div>
+            <span class="big material-icons">arrow_back</span>
+        </div>
+    </button>
+    <div class="container-article" *ngIf="article">
+        <mat-card appearance="outlined" [routerLink]="article.id.toString()" class="flat-card">
+            <mat-card-header>
+                <mat-card-title class="container-article-title">{{ article.title }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="container-article-info">
+                    <p class="article-info-date">
+                        {{ article.date | date }}
+                    </p>
+                    <p class="article-info" *ngIf="author">
+                        {{ author.username }}
+                    </p>
+                    <p class="article-info" *ngIf="topic">
+                        {{ topic.title }}
+                    </p>
+                </div>
+                <p class="article-content">
+                    Contenu: {{ article.content }}
+                </p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+<hr/>
