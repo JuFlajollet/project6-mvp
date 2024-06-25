@@ -18,7 +18,7 @@
 </div>
 
 <div class="container-articles">
-    <mat-card [routerLink]="article.id.toString()" appearance="outlined" class="flat-card" *ngFor="let article of articles">
+    <mat-card [routerLink]="['detail',article.id.toString()]" appearance="outlined" class="flat-card" *ngFor="let article of articles">
         <mat-card-header>
             <mat-card-title>{{ article.title }}</mat-card-title>
         </mat-card-header>

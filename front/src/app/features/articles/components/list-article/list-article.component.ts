@@ -24,7 +24,7 @@ export class ListArticleComponent implements OnInit {
   ngOnInit(): void {
     this.articleService.findAll().subscribe((articles: Article[]) => {
       articles.forEach((article: Article) => {
-        this.userService.getById(article.author_id.toString()).subscribe((user: User) => {
+        this.userService.findById(article.author_id.toString()).subscribe((user: User) => {
           this.articleUsers.set(article, user);
         })
       })

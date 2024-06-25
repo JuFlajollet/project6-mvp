@@ -16,6 +16,10 @@ export class ArticleService {
     return this.httpClient.get<Article[]>(this.pathService);
   }
 
+  public findById(id: string): Observable<Article> {
+    return this.httpClient.get<Article>(`${this.pathService}/${id}`);
+  }
+
   public create(article: Article): Observable<Article> {
     return this.httpClient.post<Article>(this.pathService, article);
   }
