@@ -1,7 +1,6 @@
 package com.openclassrooms.mddapi.models;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -13,47 +12,30 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.List;
 
 @Entity
-@Table(name = "ARTICLES")
+@Table(name = "COMMENTS")
 @EntityListeners(AuditingEntityListener.class)
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Article {
+public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @NotBlank
-    @Size(max = 50)
-    private String title;
 
     @NotNull
     @Size(max = 2500)
     private String content;
 
-    @NotNull
-    private Date date;
+    @ManyToOne
+    @JoinColumn(name = "article_id", referencedColumnName = "id")
+    private Article article;
 
     @OneToOne
     @JoinColumn(name = "author_id", referencedColumnName = "id")
     private User author;
-
-    @OneToOne
-    @JoinColumn(name = "topic_id", referencedColumnName = "id")
-    private Topic topic;
-
-    @OneToMany(
-            fetch = FetchType.EAGER,
-            cascade = CascadeType.ALL,
-            orphanRemoval = true,
-            mappedBy="article"
-    )
-    private List<Comment> comments;
 
     @CreatedDate
     @Column(name = "created_at", updatable = false)
