@@ -8,7 +8,7 @@ import { User } from '../models/user';
 })
 export class UserService {
 
-  private pathService = 'api/user';
+  private pathService = 'api/users';
 
   constructor(private httpClient: HttpClient) { }
 

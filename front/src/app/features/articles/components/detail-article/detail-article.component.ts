@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Article } from 'src/app/core/models/article';
+import { Comment } from 'src/app/core/models/comment';
 import { Topic } from 'src/app/core/models/topic';
 import { User } from 'src/app/core/models/user';
 import { ArticleService } from 'src/app/core/services/article.service';
@@ -15,9 +16,10 @@ import { UserService } from 'src/app/core/services/user.service';
 })
 export class DetailArticleComponent {
 
-  public article!: Article;
-  public author!: User;
-  public topic!: Topic;
+  public article$!: Observable<Article>;
+  public author$!: Observable<User>;
+  public topic$!: Observable<Topic>;
+  public comments$!: Observable<Comment[]>;
 
   public articleId: string;
 
@@ -31,14 +33,12 @@ export class DetailArticleComponent {
   }
 
   ngOnInit(): void {
-    this.articleService.findById(this.articleId).subscribe((article: Article) => {
-      this.article = article;
-      this.userService.findById(article.author_id.toString()).subscribe ((user: User) => {
-        this.author = user;
-      })
-      this.topicService.findById(article.topic_id.toString()).subscribe ((topic: Topic) => {
-        this.topic = topic;
-      })
+    this.article$ = this.articleService.findById(this.articleId);
+
+    this.article$.subscribe((article: Article) => {
+      this.author$ = this.userService.findById(article.author_id.toString());
+      this.topic$ = this.topicService.findById(article.topic_id.toString());
+      this.comments$ = this.articleService.findCommentsById(this.articleId);
     })
   }
 
@@ -46,4 +46,7 @@ export class DetailArticleComponent {
     window.history.back();
   }
 
+  public getCommentAuthor(authorId: number): Observable<User> {
+    return this.userService.findById(authorId.toString());
+  }
 }

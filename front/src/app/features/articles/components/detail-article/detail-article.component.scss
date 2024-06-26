@@ -12,6 +12,10 @@ hr {
     width: 15%;
 }
 
+.container-empty {
+    width: 17%;
+}
+
 .container-article {
     align-items: center;
     width: 100%;
@@ -20,6 +24,7 @@ hr {
 .container-article-title {
     margin-bottom: 1em;
 }
+
 
 .container-article-info {
     display: flex;
@@ -30,6 +35,34 @@ hr {
 
 .flat-card {
     border-style: none;
+}
+
+.flat-card-comment {
+    border-style: none;
+    background-color: #f5f5f5 !important;
+}
+
+.container-comment {
+    align-items: center;
+    width: 100%;
+    margin-top: 1em;
+}
+
+.container-comment-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 1em;
+    padding-left: 2em;
+    width: 70%;
+}
+
+.comment-info-author {
+    width: 10%;
+}
+
+.comment-info-content {
+    width: 90%;
 }
 
 @media (max-width: 768px){

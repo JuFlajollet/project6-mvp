@@ -15,7 +15,7 @@ import { TopicService } from 'src/app/core/services/topic.service';
 })
 export class CreateArticleComponent {
 
-  public topics$: Observable<Topic[]> = this.topicService.findAll();
+  public topics$!: Observable<Topic[]>;
 
   public form: FormGroup = this.formBuilder.group({
     title: [
@@ -43,6 +43,10 @@ export class CreateArticleComponent {
               private formBuilder: FormBuilder,
               private matSnackBar: MatSnackBar,
               private router: Router) {
+  }
+
+  ngOnInit(): void {
+    this.topics$ = this.topicService.findAll();
   }
 
   public back() {
