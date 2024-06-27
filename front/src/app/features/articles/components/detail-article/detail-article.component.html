@@ -38,7 +38,7 @@
         <div *ngIf="(comments$ | async) as comments">
             <div *ngIf="comments.length; else noComment">
                 <div class="container-comment-info" *ngFor="let comment of comments">
-                    <p class="comment-info-author">{{ comment.author_id }}</p>
+                    <p class="comment-info-author" *ngIf="commentUsers">{{ commentUsers.get(comment.id)?.username }}</p>
                     <mat-card appearance="outlined" class="flat-card-comment comment-info-content">
                         <mat-card-content>{{ comment.content }}</mat-card-content>
                     </mat-card>
@@ -50,5 +50,13 @@
                 <p>Cet article n'a aucun commentaire.</p>
             </div>
         </ng-template>
+        <form class="comment-form" [formGroup]="form" (ngSubmit)="save()">
+            <mat-form-field class="comment-form-content" appearance="outline">
+                <textarea  matInput placeholder="Ecrivez-ici votre commentaire" formControlName="content"></textarea>
+            </mat-form-field>
+            <button class="comment-form-button" mat-flat-button class="purple" type="submit" [disabled]="form.invalid">            
+                <span class="big material-icons">send</span>
+            </button>
+        </form>
     </div>
 </div>

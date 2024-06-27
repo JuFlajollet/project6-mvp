@@ -65,6 +65,26 @@ hr {
     width: 90%;
 }
 
+.comment-form {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.comment-form-content {
+    width: 70%;
+    margin-right: 1em;
+}
+
+.comment-form-button {
+    width: 20%;
+}
+
+.purple:enabled {
+    color: #7763c5 !important; 
+}
+
 @media (max-width: 768px){
     .container-article-info {
         width: 60%;

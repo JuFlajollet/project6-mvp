@@ -28,7 +28,7 @@
                     {{ article.date | date }}
                 </p>
                 <p class="articles-info" *ngIf="articleUsers">
-                    {{ articleUsers.get(article)?.username }}
+                    {{ articleUsers.get(article.id)?.username }}
                 </p>
             </div>
             <p>

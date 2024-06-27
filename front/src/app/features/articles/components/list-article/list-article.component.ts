@@ -12,7 +12,7 @@ import { UserService } from 'src/app/core/services/user.service';
 export class ListArticleComponent implements OnInit {
   public articles!: Article[];
 
-  public articleUsers = new Map<Article, User>();
+  public articleUsers = new Map<number, User>();
 
   public sortType: string = 'arrow_downward';
 
@@ -25,7 +25,7 @@ export class ListArticleComponent implements OnInit {
     this.articleService.findAll().subscribe((articles: Article[]) => {
       articles.forEach((article: Article) => {
         this.userService.findById(article.author_id.toString()).subscribe((user: User) => {
-          this.articleUsers.set(article, user);
+          this.articleUsers.set(article.id, user);
         })
       })
       this.articles = articles;
