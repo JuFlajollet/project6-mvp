@@ -8,7 +8,7 @@ import { Topic } from '../models/topic';
 })
 export class TopicService {
 
-  private pathService = 'api/topic';
+  private pathService = 'api/topics';
 
   constructor(private httpClient: HttpClient) {}
 

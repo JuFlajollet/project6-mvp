@@ -6,7 +6,7 @@
             <span class="big material-icons">arrow_back</span>
         </div>
     </button>
-    <div class="container-article" *ngIf="article">
+    <div class="container-article" *ngIf="(article$ | async) as article">
         <mat-card appearance="outlined" [routerLink]="article.id.toString()" class="flat-card">
             <mat-card-header>
                 <mat-card-title class="container-article-title">{{ article.title }}</mat-card-title>
@@ -16,10 +16,10 @@
                     <p class="article-info-date">
                         {{ article.date | date }}
                     </p>
-                    <p class="article-info" *ngIf="author">
+                    <p class="article-info" *ngIf="(author$ | async) as author">
                         {{ author.username }}
                     </p>
-                    <p class="article-info" *ngIf="topic">
+                    <p class="article-info" *ngIf="(topic$ | async) as topic">
                         {{ topic.title }}
                     </p>
                 </div>
@@ -31,3 +31,32 @@
     </div>
 </div>
 <hr/>
+<div class="container">
+    <div class="container-empty"></div>
+    <div class="container-comment">
+        <h2>Commentaires</h2>
+        <div *ngIf="(comments$ | async) as comments">
+            <div *ngIf="comments.length; else noComment">
+                <div class="container-comment-info" *ngFor="let comment of comments">
+                    <p class="comment-info-author" *ngIf="commentUsers">{{ commentUsers.get(comment.id)?.username }}</p>
+                    <mat-card appearance="outlined" class="flat-card-comment comment-info-content">
+                        <mat-card-content>{{ comment.content }}</mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+        <ng-template #noComment>
+            <div>
+                <p>Cet article n'a aucun commentaire.</p>
+            </div>
+        </ng-template>
+        <form class="comment-form" [formGroup]="form" (ngSubmit)="save()">
+            <mat-form-field class="comment-form-content" appearance="outline">
+                <textarea  matInput placeholder="Ecrivez-ici votre commentaire" formControlName="content"></textarea>
+            </mat-form-field>
+            <button class="comment-form-button" mat-flat-button class="purple" type="submit" [disabled]="form.invalid">            
+                <span class="big material-icons">send</span>
+            </button>
+        </form>
+    </div>
+</div>

@@ -46,6 +46,11 @@ export class ProfileComponent {
   ngOnInit(): void {
     //TODO: get id from session service instead
     this.user$ = this.userService.findById('1');
+
+    this.user$.subscribe((user: User) => {
+      this.form.get('email')?.setValue(user.email);
+      this.form.get('username')?.setValue(user.username);
+    })
   }
 
   public save(): void {
