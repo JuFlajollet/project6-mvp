@@ -7,6 +7,8 @@ import com.openclassrooms.mddapi.payload.response.MessageResponse;
 import com.openclassrooms.mddapi.security.services.JWTService;
 import com.openclassrooms.mddapi.services.UserService;
 import jakarta.persistence.EntityExistsException;
+import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +41,7 @@ public class AuthController {
     }
 
     @PostMapping(value = "/register", produces = "application/json")
-    public ResponseEntity<MessageResponse> register(@RequestBody RegisterRequest registerRequest) {
+    public ResponseEntity<MessageResponse> register(@Valid @RequestBody RegisterRequest registerRequest) {
         try {
             userService.createUser(registerRequest);
         } catch(EntityExistsException exception) {
@@ -54,7 +56,7 @@ public class AuthController {
     }
 
     @PostMapping(value = "/login", produces = "application/json")
-    public ResponseEntity<JwtResponse> login(@RequestBody LoginRequest loginRequest) throws BadCredentialsException {
+    public ResponseEntity<JwtResponse> login(@Valid @RequestBody LoginRequest loginRequest) throws BadCredentialsException {
         logger.info("Trying to log User {}", loginRequest.getLogin());
 
         UsernamePasswordAuthenticationToken authReq = new UsernamePasswordAuthenticationToken(loginRequest.getLogin(), loginRequest.getPassword());

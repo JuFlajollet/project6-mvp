@@ -12,11 +12,11 @@ public class PasswordValidator implements ConstraintValidator<PasswordConstraint
     public boolean isValid(String passwordField,
                            ConstraintValidatorContext cxt) {
         return passwordField != null
-                && passwordField.matches("[A-Z]+")
-                && passwordField.matches("[a-z]+")
-                && passwordField.matches("[0-9]+")
-                && passwordField.matches("[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>/?]+")
+                && passwordField.matches(".*[A-Z]+.*")
+                && passwordField.matches(".*[a-z]+.*")
+                && passwordField.matches(".*[0-9]+.*")
+                && passwordField.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>/?]+.*")
                 && (passwordField.length() >= 8)
-                && (passwordField.length() <= 40);
+                && (passwordField.length() <= 120);
     }
 }
