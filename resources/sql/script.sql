@@ -44,10 +44,10 @@ VALUES ('Java', 'Object-Oriented Programming Language'),
        ('Angular', 'Typescript Web Framework');
 
 INSERT INTO USERS (username, email, password)
-VALUES ('Test', 'test@gmail.com', 'Test12345!');
+VALUES ('Test', 'test@gmail.com', '$2a$10$PdFbnR/OIO.z1hJ1A0Hyi.pFdWC6Fzxq4F6M9g4MU1tniNvUxTn7m');
 
 INSERT INTO ARTICLES (title, content, date, author_id, topic_id)
 VALUES ('Le Framework Angular', 'Angular v2 est une plateforme front-end pour les applications web. Elle est open source et a été dévelopée par Google. La v2 a été complètememnt revue par la même équipe qui a mis en place AngularJS.', now(), 1, 1);
 
 INSERT INTO COMMENTS (content, author_id, article_id)
-VALUES ('Excellent article! A quand la suite?, 1, 1);
+VALUES ('Excellent article! A quand la suite?', 1, 1);

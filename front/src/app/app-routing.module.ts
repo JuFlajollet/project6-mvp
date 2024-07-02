@@ -4,11 +4,19 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ListArticleComponent } from './features/articles/components/list-article/list-article.component';
 import { ListTopicComponent } from './features/topics/components/list-topic/list-topic.component';
+import { LoginComponent } from './features/auth/components/login/login.component';
+import { RegisterComponent } from './features/auth/components/register/register.component';
 
 // consider a guard combined with canLoad / canActivate route option
 // to manage unauthenticated user to access private routes
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'login', 
+    component: LoginComponent 
+  },
+  { path: 'register', 
+    component: RegisterComponent 
+  },
   { 
     path: 'articles',
     loadChildren: () => import('./features/articles/articles.module').then(m => m.ArticlesModule)
@@ -19,6 +27,7 @@ const routes: Routes = [
   },
   { path: 'profile', component: ProfileComponent }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
