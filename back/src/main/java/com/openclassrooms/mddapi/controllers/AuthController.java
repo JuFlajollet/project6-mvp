@@ -5,6 +5,7 @@ import com.openclassrooms.mddapi.payload.request.RegisterRequest;
 import com.openclassrooms.mddapi.payload.response.JwtResponse;
 import com.openclassrooms.mddapi.payload.response.MessageResponse;
 import com.openclassrooms.mddapi.security.services.JWTService;
+import com.openclassrooms.mddapi.security.services.UserDetailsImpl;
 import com.openclassrooms.mddapi.services.UserService;
 import jakarta.persistence.EntityExistsException;
 import jakarta.validation.ConstraintViolationException;
@@ -61,6 +62,7 @@ public class AuthController {
 
         UsernamePasswordAuthenticationToken authReq = new UsernamePasswordAuthenticationToken(loginRequest.getLogin(), loginRequest.getPassword());
         Authentication auth = authenticationManager.authenticate(authReq);
+        UserDetailsImpl userDetails = (UserDetailsImpl) auth.getPrincipal();
 
         logger.info("User {} logged", loginRequest.getLogin());
         String jwtToken = jwtService.generateToken(auth);
@@ -68,7 +70,10 @@ public class AuthController {
 
         JwtResponse jwtResponse = JwtResponse.builder()
                 .token(jwtToken)
-                .login(loginRequest.getLogin())
+                .id(userDetails.getId())
+                .email(userDetails.getEmail())
+                .username(userDetails.getUsername())
+                .password(userDetails.getPassword())
                 .type("Bearer")
                 .build();
 

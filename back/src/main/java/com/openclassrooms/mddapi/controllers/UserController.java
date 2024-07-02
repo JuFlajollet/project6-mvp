@@ -1,6 +1,7 @@
 package com.openclassrooms.mddapi.controllers;
 
 import com.openclassrooms.mddapi.dto.UserDto;
+import com.openclassrooms.mddapi.payload.request.UpdateRequest;
 import com.openclassrooms.mddapi.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +32,9 @@ public class UserController {
     }
 
     @PutMapping(value = "/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
-    public ResponseEntity<UserDto> update(@Valid @RequestBody UserDto userDto) {
+    public ResponseEntity<UserDto> update(@Valid @RequestBody UpdateRequest updateRequest) {
         try {
-            this.userService.updateUser(userDto);
+            this.userService.updateUser(updateRequest);
 
             return ResponseEntity.ok().build();
         } catch (NumberFormatException e) {

@@ -8,6 +8,7 @@ import { TopicsModule } from './features/topics/topics.module';
 import { PagesModule } from './pages/pages.module';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
+import { AuthModule } from './features/auth/auth.module';
 
 @NgModule({
     providers: [provideHttpClient(withFetch())],
@@ -20,7 +21,8 @@ import { CoreModule } from './core/core.module';
         MatButtonModule,
         CoreModule,
         TopicsModule,
-        PagesModule
+        PagesModule,
+        AuthModule
     ]
 })
 export class AppModule {}

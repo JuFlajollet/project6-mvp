@@ -4,6 +4,7 @@ import com.openclassrooms.mddapi.dto.UserDto;
 import com.openclassrooms.mddapi.mappers.UserMapper;
 import com.openclassrooms.mddapi.models.User;
 import com.openclassrooms.mddapi.payload.request.RegisterRequest;
+import com.openclassrooms.mddapi.payload.request.UpdateRequest;
 import com.openclassrooms.mddapi.repositories.UserRepository;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
@@ -46,20 +47,22 @@ public class UserService {
         userRepository.save(newUser);
     }
 
-    public void updateUser(UserDto userDto) {
-        User newUser = userMapper.toEntity(userDto);
-        Optional<User> dbUser = userRepository.findById(userDto.getId());
+    public void updateUser(UpdateRequest updateRequest) {
+        Optional<User> dbUser = userRepository.findById(Long.parseLong(updateRequest.getId(),10));
 
         if(!dbUser.isPresent()) {
-            logger.error("User {} does not exist in db", newUser.getId());
+            logger.error("User {} does not exist in db", updateRequest.getId());
             throw new EntityNotFoundException("User does not exist in db");
         }
 
         User existingDbUser = dbUser.get();
 
-        existingDbUser.setUsername(newUser.getUsername());
-        existingDbUser.setEmail(newUser.getEmail());
-        existingDbUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
+        existingDbUser.setUsername(updateRequest.getUsername());
+        existingDbUser.setEmail(updateRequest.getEmail());
+
+        if(!(updateRequest.getPassword().equals(existingDbUser.getPassword()))) {
+            existingDbUser.setPassword(passwordEncoder.encode(updateRequest.getPassword()));
+        }
 
         userRepository.save(existingDbUser);
     }

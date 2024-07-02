@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
+import { UpdateRequest } from '../models/updateRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class UserService {
     return this.httpClient.get<User>(`${this.pathService}/${id}`);
   }
 
-  public update(id: string, user: User): Observable<User> {
-    return this.httpClient.put<User>(`${this.pathService}/${id}`, user);
+  public update(id: string, updateRequest: UpdateRequest): Observable<void> {
+    return this.httpClient.put<void>(`${this.pathService}/${id}`, updateRequest);
   }
 }

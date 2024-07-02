@@ -1,0 +1,22 @@
+<mat-card>
+    <mat-card-header fxLayoutAlign="center center">
+        <mat-card-title>Se connecter</mat-card-title>
+    </mat-card-header>
+    <form class="register-form" [formGroup]="form" (ngSubmit)="submit()">
+        <mat-card-content fxLayout="column">
+            <mat-form-field fxFlex>
+                Email ou nom d'utilisateur
+                <input matInput placeholder="Email ou Nom d'utilisateur" formControlName="login">
+            </mat-form-field>
+            <mat-form-field fxFlex>
+                Mot de passe
+                <input matInput [type]="passwordVisible ? 'password' : 'text'" placeholder="Mot de passe" formControlName="password">
+                <button mat-icon-button matSuffix (click)="passwordVisible = !passwordVisible" [attr.aria-label]="'Cacher le mot de passe'" [attr.aria-pressed]="passwordVisible">
+                    <mat-icon>{{passwordVisible ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+        </mat-card-content>
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Se connecter</button>
+        <span *ngIf="onError">Une erreur s'est produite</span>
+    </form>
+</mat-card>

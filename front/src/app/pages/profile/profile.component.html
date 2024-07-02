@@ -13,6 +13,10 @@
                 <mat-label>Email</mat-label>
                 <input class="purple-input" matInput placeholder="Email" formControlName="email">
             </mat-form-field>
+            <mat-form-field class="purple-form" appearance="outline">
+                <mat-label>Password</mat-label>
+                <input class="purple-input" matInput placeholder="Password" formControlName="password">
+            </mat-form-field>
             <button mat-flat-button color="purple" type="submit" [disabled]="form.invalid">Sauvegarder</button>
         </form>
         <button mat-button class="red-text" (click)="disconnect()">Se déconnecter</button>
