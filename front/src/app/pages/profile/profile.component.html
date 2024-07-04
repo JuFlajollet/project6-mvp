@@ -25,8 +25,10 @@
 <hr/>
 <div class="center">
     <h1>Abonnements</h1>
-    <ng-template [ngIf]="subscribe$ | async" [ngIfElse]="empty">
-
+    <ng-template [ngIf]="subscribedTopics$ | async" [ngIfElse]="empty">
+        <div *ngIf="subscribedTopics$ | async as subscribedTopics">
+            <app-list-topic-card [topics]="subscribedTopics"></app-list-topic-card>
+        </div>
     </ng-template>
     <ng-template #empty>Vous n'avez pas d'abonnements.</ng-template>
 </div>

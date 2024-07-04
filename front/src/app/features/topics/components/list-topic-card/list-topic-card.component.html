@@ -1,0 +1,22 @@
+<div class="container">
+    <mat-card appearance="outlined" class="flat-card" *ngFor="let topic of topics">
+        <mat-card-header>
+          <mat-card-title>{{ topic.title }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            Description: {{ topic.description }}
+          </p>
+        </mat-card-content>
+        <div class="box">
+          <mat-card-actions *ngIf="topicSubscriptions">
+            <button *ngIf="!topicSubscriptions.get(topic.id)" mat-flat-button color="purple" (click)="this.subscribe.emit(topic.id)">
+              <span class="ml1">S'abonner</span>
+            </button>
+            <button *ngIf="topicSubscriptions.get(topic.id)" mat-flat-button color="purple" (click)="this.unsubscribe.emit(topic.id)">
+                <span class="ml1">Se désabonner</span>
+            </button>
+          </mat-card-actions>
+        </div>
+    </mat-card>
+</div>

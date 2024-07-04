@@ -1,20 +1,4 @@
 <app-header></app-header>
-<div class="container">
-  <mat-card appearance="outlined" class="flat-card" *ngFor="let topic of (topics$ | async)">
-      <mat-card-header>
-        <mat-card-title>{{ topic.title }}</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p>
-          Description: {{ topic.description }}
-        </p>
-      </mat-card-content>
-      <div class="box">
-        <mat-card-actions>
-          <button mat-flat-button color="purple">
-            <span class="ml1">S'abonner</span>
-          </button>
-        </mat-card-actions>
-      </div>
-  </mat-card>
+<div *ngIf="topics$ | async as topics">
+  <app-list-topic-card [topics]="topics" [topicSubscriptions]="topicSubscriptions" (subscribe)="onSubscribe($event)" (unsubscribe)="onUnsubscribe($event)"></app-list-topic-card>
 </div>

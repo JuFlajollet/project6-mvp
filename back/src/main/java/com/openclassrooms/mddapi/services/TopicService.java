@@ -31,6 +31,12 @@ public class TopicService {
         return topicMapper.toDto(topics);
     }
 
+    public List<TopicDto> findAllSubscribed(Long userId) {
+        List<Topic> topics = this.topicRepository.findAll().stream().filter(topic -> topic.getUsers().stream().anyMatch(user -> user.getId().equals(userId))).collect(Collectors.toList());
+
+        return topicMapper.toDto(topics);
+    }
+
     public TopicDto findById(Long id) {
         Topic topic = this.topicRepository.findById(id).orElse(null);
 
