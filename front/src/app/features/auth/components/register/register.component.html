@@ -1,8 +1,12 @@
+<div class="small-screen">
+    <img [routerLink]="['/']" class="left" src="/assets/logo_p6.png" alt="logo" />
+</div>
+<hr class="small-screen"/>
 <div class="center">
-    <img src="/assets/logo_p6.png" alt="logo" />
+    <img class="big-screen" src="/assets/logo_p6.png" alt="logo" />
     <div class="container">
         <div class="container-left">
-            <button mat-button (click)="back()">
+            <button mat-button class="white" (click)="back()">
                 <div>
                     <span class="big material-icons">arrow_back</span>
                 </div>
@@ -25,7 +29,7 @@
             <mat-form-field class="purple-form" appearance="outline">
                 <mat-label>Mot de passe</mat-label>
                 <input matInput [type]="passwordVisible ? 'password' : 'text'" placeholder="Mot de passe" formControlName="password">
-                <button mat-icon-button matSuffix (click)="passwordVisible = !passwordVisible" [attr.aria-label]="'Cacher le mot de passe'" [attr.aria-pressed]="passwordVisible">
+                <button mat-button class="white" (click)="passwordVisible = !passwordVisible" [attr.aria-label]="'Cacher le mot de passe'" [attr.aria-pressed]="passwordVisible">
                     <mat-icon>{{passwordVisible ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
             </mat-form-field>

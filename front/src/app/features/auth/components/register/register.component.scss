@@ -10,6 +10,11 @@ img {
     width: 300px;
 }
 
+.mat-purple {
+    outline: none !important;
+    background-color: white !important;
+}
+
 .center {
     display: flex;
     justify-content: center;
@@ -39,4 +44,32 @@ img {
 
 .purple-form, .purple-form:hover {
     --mdc-outlined-text-field-outline-color: #7763c5 !important;
+}
+
+@media (max-width: 768px){
+    .big-screen {
+        display: none;
+    }
+    .small-screen {
+        display: contents;
+    }
+    img {
+        display: block;
+        width: auto;
+        height: 100%;
+        cursor: pointer;
+    }
+    .left {
+        display: flex;
+        justify-content: flex-start;
+    }
+}
+
+@media (min-width: 768px){
+    .big-screen {
+        display: contents;
+    }
+    .small-screen {
+        display: none;
+    }
 }

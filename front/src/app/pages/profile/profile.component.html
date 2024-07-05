@@ -13,8 +13,8 @@
                 <mat-label>Email</mat-label>
                 <input class="purple-input" matInput placeholder="Email" formControlName="email">
             </mat-form-field>
-            <mat-form-field class="purple-form" appearance="outline">
-                <mat-label>Password</mat-label>
+            <mat-form-field class="purple-form password" appearance="outline">
+                <mat-label>Mot de passe</mat-label>
                 <input matInput class="purple-input" [type]="passwordVisible ? 'password' : 'text'" placeholder="Password" formControlName="password">
                 <button mat-icon-button (click)="passwordVisible = !passwordVisible" [attr.aria-label]="'Cacher le mot de passe'" [attr.aria-pressed]="passwordVisible">
                     <mat-icon>{{passwordVisible ? 'visibility_off' : 'visibility'}}</mat-icon>

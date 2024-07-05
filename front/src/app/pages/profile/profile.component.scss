@@ -6,6 +6,10 @@ h1 {
     font-weight: bold;   
 }
 
+input {
+    width: 400px;
+}
+
 .center {
     display: flex;
     justify-content: center;
@@ -23,6 +27,11 @@ h1 {
     color: #cc0000 !important;
     padding-left: 3em;
     padding-right: 3em;
+}
+
+.password {
+    display: flex;
+    flex-direction: inline-block;
 }
 
 .mat-purple:disabled {
