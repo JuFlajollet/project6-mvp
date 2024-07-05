@@ -10,6 +10,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "TOPICS")
@@ -30,6 +31,13 @@ public class Topic {
     @NotNull
     @Size(max = 2500)
     private String description;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "SUBSCRIBE",
+            joinColumns = @JoinColumn( name = "topic_id" ),
+            inverseJoinColumns = @JoinColumn( name = "user_id" ) )
+    private List<User> users;
 
     @CreatedDate
     @Column(name = "created_at", updatable = false)

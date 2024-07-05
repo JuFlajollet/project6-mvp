@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Article } from 'src/app/core/models/article';
 import { User } from 'src/app/core/models/user';
 import { ArticleService } from 'src/app/core/services/article.service';
@@ -10,7 +11,7 @@ import { UserService } from 'src/app/core/services/user.service';
   styleUrl: './list-article.component.scss'
 })
 export class ListArticleComponent implements OnInit {
-  public articles!: Article[];
+  public articles$!: Observable<Article[]>;
 
   public articleUsers = new Map<number, User>();
 
@@ -22,23 +23,23 @@ export class ListArticleComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.articleService.findAll().subscribe((articles: Article[]) => {
+    this.articles$ = this.articleService.findAllSorted('desc');
+
+    this.articles$.subscribe((articles: Article[]) => {
       articles.forEach((article: Article) => {
         this.userService.findById(article.author_id.toString()).subscribe((user: User) => {
           this.articleUsers.set(article.id, user);
         })
       })
-      this.articles = articles;
-      this.sort();
     });
   }
 
   sort() {
     if(this.sortType === 'arrow_downward') {
-      this.articles.sort((a, b) => a.date.getSeconds < b.date.getSeconds? -1: 1);
+      this.articles$ = this.articleService.findAllSorted('desc');
       this.sortType = 'arrow_upward';
     } else {
-      this.articles.sort((a, b) => a.date.getSeconds > b.date.getSeconds? -1: 1);
+      this.articles$ = this.articleService.findAllSorted('asc');
       this.sortType = 'arrow_downward';
     }
   }

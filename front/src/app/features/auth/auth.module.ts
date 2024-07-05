@@ -7,6 +7,7 @@ import { MatCardModule } from "@angular/material/card";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatIconModule } from "@angular/material/icon";
 import { CommonModule } from "@angular/common";
+import { RouterLink } from "@angular/router";
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { CommonModule } from "@angular/common";
         MatInputModule,
         MatIconModule,
         MatCardModule,
-        CommonModule
+        CommonModule,
+        RouterLink
     ],
     exports: [
         LoginComponent,

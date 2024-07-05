@@ -14,7 +14,6 @@ import { SessionService } from 'src/app/core/services/session.service';
 export class LoginComponent {
 
   public onError: boolean = false;
-
   public passwordVisible: boolean = true;
 
   public form = this.formBuilder.group({
@@ -39,6 +38,10 @@ export class LoginComponent {
     private sessionService: SessionService,
     private router: Router
   ) {}
+
+  public back(): void {
+    window.history.back();
+  }
 
   public submit(): void {
     const loginRequest = this.form.value as LoginRequest;

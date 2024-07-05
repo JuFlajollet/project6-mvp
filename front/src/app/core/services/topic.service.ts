@@ -19,4 +19,16 @@ export class TopicService {
   public findById(id: string): Observable<Topic> {
     return this.httpClient.get<Topic>(`${this.pathService}/${id}`);
   }
+
+  public findAllSubscribedTopicsByUserId(userId: string): Observable<Topic[]> {
+    return this.httpClient.get<Topic[]>(`${this.pathService}/subscribe/${userId}`);
+  }
+
+  public subscribeTopic(id: string, userId: string): Observable<void> {
+    return this.httpClient.post<void>(`${this.pathService}/${id}/subscribe/${userId}`, null);
+  }
+
+  public unsubscribeTopic(id: string, userId: string): Observable<void> {
+    return this.httpClient.delete<void>(`${this.pathService}/${id}/subscribe/${userId}`);
+  }
 }

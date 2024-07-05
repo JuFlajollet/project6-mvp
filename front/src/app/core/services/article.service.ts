@@ -17,6 +17,10 @@ export class ArticleService {
     return this.httpClient.get<Article[]>(this.pathService);
   }
 
+  public findAllSorted(sortType: string): Observable<Article[]> {
+    return this.httpClient.get<Article[]>(`${this.pathService}/sort/${sortType}`);
+  }
+
   public findById(id: string): Observable<Article> {
     return this.httpClient.get<Article>(`${this.pathService}/${id}`);
   }

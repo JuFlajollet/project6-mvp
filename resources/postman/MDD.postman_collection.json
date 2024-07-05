@@ -16,6 +16,35 @@
 						"header": []
 					},
 					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"email\": \"yoga3@studio.com\",\r\n    \"username\": \"yoga3\",\r\n    \"password\": \"Testt1235!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/users/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -31,7 +60,31 @@
 					"response": []
 				},
 				{
+					"name": "findSubscribedTopicByUserId",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
 					"name": "findById",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "subscribe",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "unsubscribe",
 					"request": {
 						"method": "GET",
 						"header": []
@@ -150,6 +203,25 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "findAllSorted",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/articles",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"articles"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -192,7 +264,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"login\": \"yoga\",\r\n    \"password\": \"test!1234\"\r\n}",
+							"raw": "{\r\n    \"login\": \"yoga\",\r\n    \"password\": \"Test!123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

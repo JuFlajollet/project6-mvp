@@ -13,6 +13,7 @@ import { createPasswordValidator } from 'src/app/core/validators/createPasswordV
 export class RegisterComponent {
 
   public onError = false;
+  public passwordVisible: boolean = true;
 
   public form = this.formBuilder.group({
     username: [
@@ -43,6 +44,10 @@ export class RegisterComponent {
   constructor(private authService: AuthService,
               private formBuilder: FormBuilder,
               private router: Router) {
+  }
+
+  public back(): void {
+    window.history.back();
   }
 
   public submit(): void {

@@ -8,6 +8,7 @@ import { Comment } from 'src/app/core/models/comment';
 import { Topic } from 'src/app/core/models/topic';
 import { User } from 'src/app/core/models/user';
 import { ArticleService } from 'src/app/core/services/article.service';
+import { SessionService } from 'src/app/core/services/session.service';
 import { TopicService } from 'src/app/core/services/topic.service';
 import { UserService } from 'src/app/core/services/user.service';
 
@@ -41,6 +42,7 @@ export class DetailArticleComponent {
     private articleService: ArticleService,
     private userService: UserService,
     private topicService: TopicService,
+    private sessionService: SessionService,
     private formBuilder: FormBuilder,
     private matSnackBar: MatSnackBar
   ) { 
@@ -62,17 +64,19 @@ export class DetailArticleComponent {
   }
 
   public save(): void {
-    const articleId = parseInt(this.articleId, 10);
+    if(this.sessionService.session){
+      const articleId = parseInt(this.articleId, 10);
 
-    const comment = this.form?.value as Comment;
-    comment.author_id = 1; //TODO: Use from session
-    comment.article_id = articleId;
+      const comment = this.form?.value as Comment;
+      comment.author_id = this.sessionService.session.id;
+      comment.article_id = articleId;
 
-    this.articleService.createComment(this.articleId, comment).subscribe((_: Comment) => {  
-      this.matSnackBar.open('Comment Created!', 'Close', { duration: 3000 });
-      this.getComments(articleId);
-      this.form.reset();
-    });
+      this.articleService.createComment(this.articleId, comment).subscribe((_: Comment) => {  
+        this.matSnackBar.open('Comment Created!', 'Close', { duration: 3000 });
+        this.getComments(articleId);
+        this.form.reset();
+      });
+    }
   }
 
   public getComments(articleId: number): void {

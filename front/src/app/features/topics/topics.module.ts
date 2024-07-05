@@ -6,10 +6,12 @@ import { MatButtonModule } from "@angular/material/button";
 import { provideHttpClient } from "@angular/common/http";
 import { CoreModule } from "src/app/core/core.module";
 import { TopicsRoutingModule } from "./topics-routing.module";
+import { ListTopicCardComponent } from "./components/list-topic-card/list-topic-card.component";
 
 @NgModule({
     declarations: [
-        ListTopicComponent
+        ListTopicComponent,
+        ListTopicCardComponent
     ],
     imports: [
         TopicsRoutingModule,
@@ -19,7 +21,8 @@ import { TopicsRoutingModule } from "./topics-routing.module";
         CommonModule
     ],
     exports: [
-        ListTopicComponent
+        ListTopicComponent,
+        ListTopicCardComponent
     ]
 })
 export class TopicsModule { }

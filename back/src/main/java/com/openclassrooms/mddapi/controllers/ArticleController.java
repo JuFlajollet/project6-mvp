@@ -28,6 +28,13 @@ public class ArticleController {
         return ResponseEntity.ok().body(articles);
     }
 
+    @GetMapping(value = "/sort/{sortType}", produces = { MediaType.APPLICATION_JSON_VALUE })
+    public ResponseEntity<List<ArticleDto>> getArticlesSorted(@PathVariable("sortType") String sortType){
+        List<ArticleDto> articles = articleService.findAllSorted(sortType);
+
+        return ResponseEntity.ok().body(articles);
+    }
+
     @GetMapping(value = "/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<ArticleDto> getArticle(@PathVariable("id") String id){
         ArticleDto article = articleService.findById(Long.valueOf(id));

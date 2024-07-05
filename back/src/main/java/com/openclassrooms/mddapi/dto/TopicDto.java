@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Builder
@@ -21,6 +22,8 @@ public class TopicDto {
     @NotNull
     @Size(max = 2500)
     private String description;
+
+    private List<Long> users;
 
     private LocalDateTime createdAt;
 

@@ -12,6 +12,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from '@angular/material/select';
 import { CreateArticleComponent } from "./components/create-article/create-article.component";
 import { DetailArticleComponent } from "./components/detail-article/detail-article.component";
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
     declarations: [
@@ -27,6 +28,7 @@ import { DetailArticleComponent } from "./components/detail-article/detail-artic
         MatFormFieldModule,
         MatInputModule,
         MatSelectModule,
+        MatPaginatorModule,
         CoreModule,
         MatCardModule,
         MatButtonModule,
