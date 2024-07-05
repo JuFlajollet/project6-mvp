@@ -6,12 +6,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopicsModule } from './features/topics/topics.module';
 import { PagesModule } from './pages/pages.module';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './features/auth/auth.module';
+import { jwtInterceptor } from './core/interceptors/jwt.interceptor';
 
 @NgModule({
-    providers: [provideHttpClient(withFetch())],
+    providers: [
+        provideHttpClient(withInterceptors([jwtInterceptor])),
+    ],
     declarations: [AppComponent],
     bootstrap: [AppComponent],
     imports: [
