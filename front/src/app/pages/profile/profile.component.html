@@ -15,9 +15,13 @@
             </mat-form-field>
             <mat-form-field class="purple-form" appearance="outline">
                 <mat-label>Password</mat-label>
-                <input class="purple-input" matInput placeholder="Password" formControlName="password">
+                <input matInput class="purple-input" [type]="passwordVisible ? 'password' : 'text'" placeholder="Password" formControlName="password">
+                <button mat-icon-button (click)="passwordVisible = !passwordVisible" [attr.aria-label]="'Cacher le mot de passe'" [attr.aria-pressed]="passwordVisible">
+                    <mat-icon>{{passwordVisible ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
             </mat-form-field>
             <button mat-flat-button color="purple" type="submit" [disabled]="form.invalid">Sauvegarder</button>
+            <span *ngIf="onError">Une erreur s'est produite</span>
         </form>
         <button mat-button class="red-text" (click)="disconnect()">Se déconnecter</button>
     </div>
@@ -25,9 +29,11 @@
 <hr/>
 <div class="center">
     <h1>Abonnements</h1>
-    <ng-template [ngIf]="subscribedTopics$ | async" [ngIfElse]="empty">
-        <div *ngIf="subscribedTopics$ | async as subscribedTopics">
-            <app-list-topic-card [topics]="subscribedTopics"></app-list-topic-card>
+    <ng-template [ngIf]="(subscribedTopics$ | async)?.length != 0" [ngIfElse]="empty">
+        <div *ngIf="(subscribedTopics$ | async) as subscribedTopics">
+            <div *ngIf="topicSubscriptions">
+                <app-list-topic-card [topics]="subscribedTopics" [topicSubscriptions]="topicSubscriptions" (unsubscribe)="onUnsubscribe($event)"></app-list-topic-card>
+            </div>
         </div>
     </ng-template>
     <ng-template #empty>Vous n'avez pas d'abonnements.</ng-template>

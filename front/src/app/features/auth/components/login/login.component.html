@@ -1,22 +1,32 @@
-<mat-card>
-    <mat-card-header fxLayoutAlign="center center">
-        <mat-card-title>Se connecter</mat-card-title>
-    </mat-card-header>
-    <form class="register-form" [formGroup]="form" (ngSubmit)="submit()">
-        <mat-card-content fxLayout="column">
-            <mat-form-field fxFlex>
-                Email ou nom d'utilisateur
+<div class="center">
+    <img src="/assets/logo_p6.png" alt="logo" />
+    <div class="container">
+        <div class="container-left">
+            <button mat-button (click)="back()">
+                <div>
+                    <span class="big material-icons">arrow_back</span>
+                </div>
+            </button>
+        </div>
+    </div>
+    <h1>
+        Se connecter
+    </h1>
+    <div class="center">
+        <form class="login-form" [formGroup]="form" (ngSubmit)="submit()">
+            <mat-form-field class="purple-form" appearance="outline">
+                <mat-label>Email ou nom d'utilisateur</mat-label>
                 <input matInput placeholder="Email ou Nom d'utilisateur" formControlName="login">
             </mat-form-field>
-            <mat-form-field fxFlex>
-                Mot de passe
+            <mat-form-field class="purple-form" appearance="outline">
+                <mat-label>Mot de passe</mat-label>
                 <input matInput [type]="passwordVisible ? 'password' : 'text'" placeholder="Mot de passe" formControlName="password">
                 <button mat-icon-button matSuffix (click)="passwordVisible = !passwordVisible" [attr.aria-label]="'Cacher le mot de passe'" [attr.aria-pressed]="passwordVisible">
                     <mat-icon>{{passwordVisible ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
             </mat-form-field>
-        </mat-card-content>
-        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Se connecter</button>
-        <span *ngIf="onError">Une erreur s'est produite</span>
-    </form>
-</mat-card>
+            <button mat-flat-button color="purple" type="submit" [disabled]="form.invalid">Se connecter</button>
+            <span *ngIf="onError">Une erreur s'est produite</span>
+        </form>
+    </div>
+</div>

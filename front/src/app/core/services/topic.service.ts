@@ -21,7 +21,7 @@ export class TopicService {
   }
 
   public findAllSubscribedTopicsByUserId(userId: string): Observable<Topic[]> {
-    return this.httpClient.get<Topic[]>(`${this.pathService}/${userId}`);
+    return this.httpClient.get<Topic[]>(`${this.pathService}/subscribe/${userId}`);
   }
 
   public subscribeTopic(id: string, userId: string): Observable<void> {

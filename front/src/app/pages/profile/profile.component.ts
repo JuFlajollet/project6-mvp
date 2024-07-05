@@ -25,6 +25,7 @@ export class ProfileComponent {
 
   public session: Session;
   public userId: number;
+  public passwordVisible: boolean = true;
   public onError = false;
   public topicSubscriptions = new Map<number, boolean>();
 
@@ -65,12 +66,11 @@ export class ProfileComponent {
   }
 
   ngOnInit(): void {
-    this.user$ = this.userService.findById(this.userId.toString());
-
     this.user$.subscribe((user: User) => {
       this.form.get('email')?.setValue(user.email);
       this.form.get('username')?.setValue(user.username);
     })
+    this.fetchTopics();
   }
 
   public save(): void {
@@ -100,20 +100,15 @@ export class ProfileComponent {
     this.router.navigate(['/'])
   }
 
-  public onSubscribe(topicId: number): void {
-    this.topicService.subscribeTopic(topicId.toString(), this.userId.toString()).subscribe(_ => this.fetchTopics());
-  }
-
   public onUnsubscribe(topicId: number): void {
     this.topicService.unsubscribeTopic(topicId.toString(), this.userId.toString()).subscribe(_ => this.fetchTopics());
   }
 
   private fetchTopics(): void {
-    this.subscribedTopics$ = this.topicService.findAll();
+    this.subscribedTopics$ = this.topicService.findAllSubscribedTopicsByUserId(this.userId.toString());
     this.subscribedTopics$.subscribe((topics: Topic[]) => {
       topics.forEach((topic: Topic) => {
-        const isSubscribed = topic.users.some(userId => userId === this.userId);
-        this.topicSubscriptions.set(topic.id, isSubscribed);
+        this.topicSubscriptions.set(topic.id, true);
       })
     });
   }

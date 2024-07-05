@@ -16,7 +16,7 @@ export class ListTopicCardComponent {
   @Input()
   public topics!: Topic[];
   @Input()
-  public topicSubscriptions = new Map<number, boolean>();
+  public topicSubscriptions!: Map<number, boolean>;
 
   @Output() subscribe: EventEmitter<any> = new EventEmitter();
   @Output() unsubscribe: EventEmitter<any> = new EventEmitter();

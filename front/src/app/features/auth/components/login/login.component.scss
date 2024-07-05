@@ -1,0 +1,42 @@
+hr {
+    width:90%;
+}
+
+h1 {
+    font-weight: bold;   
+}
+
+img {
+    width: 300px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.mat-purple:disabled {
+    background-color: gray !important; 
+    color: #fff !important;
+    padding-left: 3em;
+    padding-right: 3em;
+}
+
+.mat-purple {
+    background-color: #7763c5 !important; 
+    color: #fff !important;
+    padding-left: 3em;
+    padding-right: 3em;
+}
+
+.purple-form, .purple-form:hover {
+    --mdc-outlined-text-field-outline-color: #7763c5 !important;
+}

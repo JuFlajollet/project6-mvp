@@ -24,7 +24,9 @@ export class ListTopicComponent implements OnInit {
     this.userId = this.sessionService.session!.id;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.fetchTopics();
+  }
   
   public onSubscribe(topicId: number): void {
     this.topicService.subscribeTopic(topicId.toString(), this.userId.toString()).subscribe(_ => this.fetchTopics());
