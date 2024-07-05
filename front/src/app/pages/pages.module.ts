@@ -11,11 +11,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ProfileComponent } from "./profile/profile.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CoreModule } from "../core/core.module";
+import { NotFoundComponent } from "./not-found/not-found.component";
 
 @NgModule({
     declarations: [
         HomeComponent,
-        ProfileComponent
+        ProfileComponent,
+        NotFoundComponent
     ],
     imports: [
         CoreModule,
@@ -32,7 +34,8 @@ import { CoreModule } from "../core/core.module";
     ],
     exports: [
         HomeComponent,
-        ProfileComponent
+        ProfileComponent,
+        NotFoundComponent
     ]
 })
 export class PagesModule { }

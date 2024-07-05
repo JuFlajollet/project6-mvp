@@ -7,6 +7,15 @@
   gap: 30px;
 }
 
+.welcome {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  padding-top: 30px;
+}
+
 .center {
   height: 100vh;
   display: flex;

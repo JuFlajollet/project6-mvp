@@ -1,7 +1,7 @@
 <div *ngIf="$isLogged() | async; else notLogged">
   <app-header></app-header>
-  <div class="center">
-    <span>Bienvenue!</span>
+  <div *ngIf="session" class="welcome">
+    <h2>Bienvenue {{session.username}}!</h2>
   </div>
 </div>
 <ng-template #notLogged>
@@ -11,4 +11,5 @@
       <button mat-stroked-button (click)="login()">Se connecter</button>
       <button mat-stroked-button (click)="register()">S'inscrire</button>
     </div>
-</div>
+  </div>
+</ng-template>
