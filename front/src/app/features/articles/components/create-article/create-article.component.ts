@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { Article } from 'src/app/core/models/article';
 import { Topic } from 'src/app/core/models/topic';
 import { ArticleService } from 'src/app/core/services/article.service';
+import { SessionService } from 'src/app/core/services/session.service';
 import { TopicService } from 'src/app/core/services/topic.service';
 
 @Component({
@@ -40,6 +41,7 @@ export class CreateArticleComponent {
 
   constructor(private topicService: TopicService,
               private articleService: ArticleService,
+              private sessionService: SessionService,
               private formBuilder: FormBuilder,
               private matSnackBar: MatSnackBar,
               private router: Router) {
@@ -56,7 +58,7 @@ export class CreateArticleComponent {
   public save(): void {
     const article = this.form?.value as Article;
     article.date = new Date();
-    article.author_id = 1; //TODO: Use from session
+    article.author_id = this.sessionService.session!.id;
 
     this.articleService.create(article).subscribe((_: Article) => {  
       this.matSnackBar.open('Article Created!', 'Close', { duration: 3000 });

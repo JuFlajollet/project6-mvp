@@ -23,7 +23,7 @@ export class ListArticleComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.articles$ = this.articleService.findAllSorted('desc');
+    this.articles$ = this.articleService.findAllSorted('asc');
 
     this.articles$.subscribe((articles: Article[]) => {
       articles.forEach((article: Article) => {

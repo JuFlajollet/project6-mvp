@@ -45,6 +45,8 @@ In my SQL command line (Or you can use a database tool like [DBeaver](https://db
 
 You can change `user`, `password` or `database name` but you will have to change the `application.properties` in the back end project accordingly.
 
+You can configure
+
 SQL script for creating the schema (the one used with SOURCE) is available there: `resources/sql/script.sql`
 
 #### Setup Back
@@ -60,7 +62,23 @@ SQL script for creating the schema (the one used with SOURCE) is available there
 
 > mvn clean install
 
+- Configure your application.properties (See `Configuration Back` under)
 - Run the application (`MddApiApplication.java`).
+
+#### Configuration Back
+
+Go to the application.properties file in your local MDD project.
+
+- Replace the value of line `spring.datasource.url` by : `jdbc:mysql://{hostname}:{Port}/{nameOfYourDB}` => Example: `jdbc:mysql://myhost:5001/mydatabase`)
+
+To configure your db access, create local environment variables:
+- `DBUser`: Your database user
+- `DBPassword`: The database password for your user
+
+To configure your jwt token secret key, create local environment variable:
+- `JwtSecretKey`: Your JWT Token Secret Key (Min. 256 characters else the encryption won't work)
+
+If you use Intellij, you can easily [create environement variables directly in run/debug configurations of the app.](https://www.jetbrains.com/help/objc/add-environment-variables-and-program-arguments.html)
 
 #### Setup and launch Front
 
