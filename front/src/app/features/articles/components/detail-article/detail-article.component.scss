@@ -98,6 +98,16 @@ hr {
     .article-content {
         width: 90%;
     }
+    .big-screen {
+        display: none;
+    }
+    .small-screen {
+        display: block;
+    }
+    .container-comment-info {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
 
 @media (min-width: 768px){
@@ -112,5 +122,11 @@ hr {
     }
     .article-content {
         width: 88%;
+    }
+    .big-screen {
+        display: block;
+    }
+    .small-screen {
+        display: none;
     }
 }

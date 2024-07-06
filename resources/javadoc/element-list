@@ -1,0 +1,13 @@
+com.openclassrooms.mddapi
+com.openclassrooms.mddapi.configuration
+com.openclassrooms.mddapi.controllers
+com.openclassrooms.mddapi.dto
+com.openclassrooms.mddapi.exception
+com.openclassrooms.mddapi.mappers
+com.openclassrooms.mddapi.models
+com.openclassrooms.mddapi.payload.request
+com.openclassrooms.mddapi.payload.response
+com.openclassrooms.mddapi.repositories
+com.openclassrooms.mddapi.security.services
+com.openclassrooms.mddapi.services
+com.openclassrooms.mddapi.validators

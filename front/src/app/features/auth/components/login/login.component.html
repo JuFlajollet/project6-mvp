@@ -1,36 +1,37 @@
-<div class="small-screen">
+<button class="arrow small-screen center" mat-button (click)="back()">
+    <div>
+        <span class="big material-icons">arrow_back</span>
+    </div>
+</button>
+<div class="big-screen">
     <img [routerLink]="['/']" class="left" src="/assets/logo_p6.png" alt="logo" />
 </div>
-<hr class="small-screen"/>
-<div class="center">
-    <img class="big-screen" src="/assets/logo_p6.png" alt="logo" />
-    <div class="container">
-        <div class="container-left">
-            <button mat-button (click)="back()">
-                <div>
-                    <span class="big material-icons">arrow_back</span>
-                </div>
-            </button>
+<hr class="big-screen"/>
+<img class="small-screen center" src="/assets/logo_p6.png" alt="logo" />
+<div class="container">
+    <button class="arrow big-screen" mat-button (click)="back()">
+        <div>
+            <span class="big material-icons">arrow_back</span>
         </div>
-    </div>
-    <h1>
+    </button>
+    <h1 class="center">
         Se connecter
     </h1>
-    <div class="center">
-        <form class="login-form" [formGroup]="form" (ngSubmit)="submit()">
-            <mat-form-field class="purple-form" appearance="outline">
-                <mat-label>Email ou nom d'utilisateur</mat-label>
-                <input matInput placeholder="Email ou Nom d'utilisateur" formControlName="login">
-            </mat-form-field>
-            <mat-form-field class="purple-form" appearance="outline">
-                <mat-label>Mot de passe</mat-label>
-                <input matInput [type]="passwordVisible ? 'password' : 'text'" placeholder="Mot de passe" formControlName="password">
-                <button mat-icon-button matSuffix (click)="passwordVisible = !passwordVisible" [attr.aria-label]="'Cacher le mot de passe'" [attr.aria-pressed]="passwordVisible">
-                    <mat-icon>{{passwordVisible ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-            </mat-form-field>
-            <button mat-flat-button color="purple" type="submit" [disabled]="form.invalid">Se connecter</button>
-            <span *ngIf="onError">Une erreur s'est produite</span>
-        </form>
-    </div>
+</div>
+<div class="center">
+    <form class="login-form" [formGroup]="form" (ngSubmit)="submit()">
+        <mat-form-field class="purple-form" appearance="outline">
+            <mat-label>Email ou nom d'utilisateur</mat-label>
+            <input matInput placeholder="Email ou Nom d'utilisateur" formControlName="login">
+        </mat-form-field>
+        <mat-form-field class="purple-form" appearance="outline">
+            <mat-label>Mot de passe</mat-label>
+            <input matInput [type]="passwordVisible ? 'password' : 'text'" placeholder="Mot de passe" formControlName="password">
+            <button mat-icon-button matSuffix (click)="passwordVisible = !passwordVisible" [attr.aria-label]="'Cacher le mot de passe'" [attr.aria-pressed]="passwordVisible">
+                <mat-icon>{{passwordVisible ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+         </mat-form-field>
+        <button mat-flat-button color="purple" type="submit" [disabled]="form.invalid">Se connecter</button>
+        <span *ngIf="onError">Une erreur s'est produite</span>
+    </form>
 </div>

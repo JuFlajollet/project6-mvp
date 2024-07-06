@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatIconModule } from "@angular/material/icon";
 import { CommonModule } from "@angular/common";
 import { RouterLink } from "@angular/router";
+import { MatButtonModule } from "@angular/material/button";
 
 @NgModule({
     declarations: [
@@ -22,6 +23,7 @@ import { RouterLink } from "@angular/router";
         MatInputModule,
         MatIconModule,
         MatCardModule,
+        MatButtonModule,
         CommonModule,
         RouterLink
     ],

@@ -38,10 +38,11 @@
         <div *ngIf="(comments$ | async) as comments">
             <div *ngIf="comments.length; else noComment">
                 <div class="container-comment-info" *ngFor="let comment of comments">
-                    <p class="comment-info-author" *ngIf="commentUsers">{{ commentUsers.get(comment.id)?.username }}</p>
+                    <p class="comment-info-author big-screen" *ngIf="commentUsers">{{ commentUsers.get(comment.id)?.username }}</p>
                     <mat-card appearance="outlined" class="flat-card-comment comment-info-content">
                         <mat-card-content>{{ comment.content }}</mat-card-content>
                     </mat-card>
+                    <p class="comment-info-author small-screen" *ngIf="commentUsers">{{ commentUsers.get(comment.id)?.username }}</p>
                 </div>
             </div>
         </div>
