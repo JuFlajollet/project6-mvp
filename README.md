@@ -1,4 +1,4 @@
-# project6-mdd
+# Project6 - MDD Application
 Sixth project of OpenClassrooms Java/Angular Fullstack Training Course.
 
 The original source code comes from [this repository in the OpenClassrooms Student Center](https://github.com/OpenClassrooms-Student-Center/Developpez-une-application-full-stack-complete).
@@ -10,6 +10,14 @@ The original source code comes from [this repository in the OpenClassrooms Stude
 #### MySQL
 
 SQL script for creating the schema is available there: `resources/sql/script.sql`
+
+#### Postman collection
+
+A Postman collection is available there: `resources/postman/MDD.postman_collection.json`
+
+#### Javadoc
+
+A Javadoc is available there: `resources/javadoc/index.html`
 
 ### Global Setup
 
@@ -38,3 +46,42 @@ In my SQL command line (Or you can use a database tool like [DBeaver](https://db
 You can change `user`, `password` or `database name` but you will have to change the `application.properties` in the back end project accordingly.
 
 SQL script for creating the schema (the one used with SOURCE) is available there: `resources/sql/script.sql`
+
+#### Setup Back
+
+- Clone the project (if you didn't do already):
+
+> git clone https://github.com/JuFlajollet/project6-mdd/
+
+- Launch your preferred IDE and open the folder where you cloned the backend project.
+- Select the release branch
+- Check if you have correct JDK version for project (Java 21) and Maven.
+- Download dependencies and build project through Maven:
+
+> mvn clean install
+
+- Run the application (`MddApiApplication.java`).
+
+#### Setup and launch Front
+
+- Clone the project (if you didn't do already):
+
+> git clone https://github.com/JuFlajollet/project6-mdd/
+
+- Go inside front folder:
+
+> cd front
+
+- Install dependencies:
+
+> npm install
+
+- Launch Front-end:
+
+> npm run start;
+
+If you didn't install DB and launch the Back, you won't be able to go further than homepage, login and register.
+
+By default, the user account that you can use to connect is:
+- login: Test
+- password: Test!123456
